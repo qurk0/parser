@@ -1,4 +1,5 @@
 import pandas as pd
+from grades import GRADE_MAPPING
 
 # Загрузка файла
 df = pd.read_csv("таблица_магистры.csv", encoding='cp1251', delimiter=';', engine='python')
@@ -19,6 +20,7 @@ disciplines = [
 students_data = []
 for _, row in df.iloc[student_start_index:].iterrows():
     student = {
+
         "number": row.iloc[0],
         "id": row.iloc[1],
         "name": row.iloc[2],
@@ -27,7 +29,7 @@ for _, row in df.iloc[student_start_index:].iterrows():
     }
     for disc in disciplines:
         col = disc["column_index"]
-        student["grades"][disc["name_and_type"]] = row[col]
+        student["grades"][disc["name_and_type"]] = GRADE_MAPPING.get(row[col], row[col])
     students_data.append(student)
 
 print("Дисциплины:")

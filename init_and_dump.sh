@@ -61,6 +61,14 @@ CREATE TABLE ra_results (
     percent REAL,
     diff_percent REAL
 );
+
+CREATE TABLE ra_cipher (
+    student_cipher varchar(7) UNIQUE
+    stud_id INTEGER NOT NULL
+    name varchar (20)
+    surname varchar (20)
+    patronymic varchar (20)
+)
 EOF
 
 # === Выполнение ===
